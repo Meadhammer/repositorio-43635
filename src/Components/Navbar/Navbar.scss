@@ -1,0 +1,123 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&family=Tiro+Gurmukhi:ital@0;1&display=swap");
+
+
+.encabezado {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    height: 265px;
+    &__logo {
+        display: flex;
+        align-items: flex-end;
+        background-image: url(https://i.postimg.cc/yxRD5wPP/logotrip.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        min-height: 240px;
+        .logo__texto1 {
+            display: none;
+            text-align: justify;
+            margin: 20px;
+        }
+        .logo__texto2 {
+            color: #cf962a;
+            text-align: center;
+            text-decoration: none;
+            margin: 10px;
+            padding-top: 130px;
+            font-family: 'lobster', cursive;
+            font-variant: small-caps;
+        }
+    }
+    &__menu {
+        display: inline-block;
+        .menu {
+            display: flex;
+            list-style: none;
+            li a {
+                text-decoration: none;
+                color: blanchedalmond;
+                background-color: olivedrab;
+                border-radius: 5px;
+                transition: 0.3s ease;
+                border: 0.5px solid #943712;
+                margin: 0 15px;
+                padding: 15px;
+                &:hover {
+                    background-color: orangered;
+                }
+            }
+        }
+        .hamburger {
+            display: none;
+            font-size: 24px;
+            user-select: none;
+        }
+    }
+}
+
+@media (max-width: 1264px) {
+    .encabezado {
+        flex-flow: column;
+        &__search {
+            display: none;
+    }
+    
+    }
+}
+
+@media (max-width: 768px) {
+    .encabezado {
+        flex-flow: row-reverse;
+        &__menu {
+            .menu { 
+                display:none;
+                position: absolute;
+                background-color: olivedrab;
+                right: 0;
+                left: 0;
+                text-align: center;
+                padding: 16px 0;
+                li a {
+                    padding: 0;
+                    border: transparent;
+                    &:hover {
+                        display: inline-block;
+                        background-color: olivedrab;
+                        color: orangered;
+                        transition: 0.3s ease;
+                    }
+                }
+                li + li {
+                    margin-top: 2.7em;
+                }
+            }
+            input[type=checkbox]:checked ~ .menu {
+                display: block;
+            }
+            .hamburger {
+                display: block;
+            }
+        }
+    }    
+}
+
+$bgColors:(
+    Light: Blanchedalmond,
+    Med: WHEAT,
+    Dark: #943712
+);
+
+@each $name, $value in $bgColors {
+    .bg#{$name} {
+        background-color: $value;
+    }
+}
+
+#checkbox_toggle {
+    display: none;
+    visibility: hidden;
+}
+
