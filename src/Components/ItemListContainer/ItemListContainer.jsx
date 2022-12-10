@@ -2,6 +2,7 @@ import './ItemListContainer.scss'
 import { useEffect, useState } from 'react'
 import { useParams } from "react-router-dom"
 import ItemList from '../itemList/ItemList'
+import {mock} from '../../productMock'
 
 export const ItemListContainer = (props) => {
    
@@ -11,27 +12,22 @@ export const ItemListContainer = (props) => {
 
     const { categoryId } = useParams()
 
-    const getProducts=()=>{
-        fetch("productMock.json"
-        , {
-            headers : { 
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-           }
-        } )
-        .then((response) => response.json())
-        .then((res) => {
-            setTimeout(() => {
-                console.log(res);
-                setStock(res);
-            }, 2000);
-        })
-        .catch(err=>console.log(err));
-    }
-
     useEffect (()=>{
-        getProducts();
-        console.log(stock)
+        const task = new Promise((resolve, reject) => {
+            setTimeout(() => {
+              resolve(mock)
+            }, 2000)
+          })
+      
+          task
+            .then((res) => {
+                setStock(res)
+                console.log("Stock recuperado: " + stock)
+            })
+            .catch((err) => {
+              console.log("se rechazo")
+            })
+        
         const stockFiltered = stock.filter(
             (item) => item.categoria === categoryId
           )
