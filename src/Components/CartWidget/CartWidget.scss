@@ -1,11 +1,12 @@
 .widget {
-    font-size: 15px;
-    .widget_img {
-        width: 50px;
-        height: auto;
-    }
+    padding-right: 3rem;
     .widget_span {
-        opacity: 0.5;
+        font-size: 1.12rem;
+        padding: 0 0.3rem;
+        vertical-align: top;
+        opacity: 0.4;
         color: red;
+        border: 0.05rem solid #cf962a ;
+        border-radius: 75%;
     }
 }

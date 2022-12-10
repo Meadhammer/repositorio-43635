@@ -29,6 +29,7 @@
             padding-top: 130px;
             font-family: 'lobster', cursive;
             font-variant: small-caps;
+            font-size: x-large;
         }
     }
     &__menu {
@@ -36,7 +37,7 @@
         .menu {
             display: flex;
             list-style: none;
-            li a {
+            .menuBtn {
                 text-decoration: none;
                 color: blanchedalmond;
                 background-color: olivedrab;
