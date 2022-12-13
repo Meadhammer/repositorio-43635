@@ -6,7 +6,7 @@ const ItemDetail = ({item}) => {
     return (
         <div className = "col-12 col-lg-6 col-xxl-4" >
           <div className="card" style={{width: "22rem",}}>
-              <img src={item?.imagenes[0]} className="card-img-top" alt={`pipa${item?.id}`} />
+              <img src={item?.imagenes && item.imagenes[0]} className="card-img-top" alt={`pipa${item?.id}`} />
               <div className="card-body">
                 <h5 className="card-title">{item?.nombre} { item?.span && <span className="badge rounded-pill text-bg-warning"> Nueva!!!</span> }</h5>
                 <p className="card-text">{item?.descripcion}</p>
@@ -30,13 +30,13 @@ const ItemDetail = ({item}) => {
                                               </div>
                                               <div className="carousel-inner">
                                                 <div className="carousel-item active">
-                                                  <img src={item?.imagenes[0]} className="d-block w-100" alt={`pipa${item?.id}_1`} />
+                                                  <img src={item?.imagenes && item.imagenes[0]} className="d-block w-100" alt={`pipa${item?.id}_1`} />
                                                 </div>
                                                 <div className="carousel-item">
-                                                  <img src={item?.imagenes[1]} className="d-block w-100" alt={`pipa${item?.id}_2`} />
+                                                  <img src={item?.imagenes && item.imagenes[1]} className="d-block w-100" alt={`pipa${item?.id}_2`} />
                                                 </div>
                                                 <div className="carousel-item">
-                                                  <img src={item?.imagenes[2]} className="d-block w-100" alt={`pipa${item?.id}_3`} />
+                                                  <img src={item?.imagenes && item.imagenes[2]} className="d-block w-100" alt={`pipa${item?.id}_3`} />
                                                 </div>
                                               </div>
                                               <button className="carousel-control-prev" type="button" data-bs-target={`#carousel${item?.id}Indicators`} data-bs-slide="prev">
