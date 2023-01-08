@@ -1,29 +1,35 @@
 import { ItemListContainer } from './components/itemListContainer/ItemListContainer';
 import ItemDetailContainer from './components/itemDetailContainer/ItemDetailContainer';
 import { NavBar } from './components/navBar/NavBar';
+import CartContextProvider from "./components/context/CartContext";
+import Cart from './components/cart/Cart';
 import { BrowserRouter, Routes, Route} from "react-router-dom";
 
 function App() {
   return (
     <BrowserRouter>
 
-      <NavBar />
+      <CartContextProvider>
+        
+        <NavBar />
 
-      <Routes>
+        <Routes>
 
-        <Route path="/" element={<ItemListContainer greeting="Bienvenidos!!!" />} />
+          <Route path="/" element={<ItemListContainer greeting="Bienvenidos!!!" />} />
 
-        <Route path="/category/:categoryId" element={<ItemListContainer greeting="Pipas de " />} />
+          <Route path="/category/:categoryId" element={<ItemListContainer greeting="Pipas de " />} />
 
-        <Route path="/category" element={<ItemListContainer greeting="Catálogo de Pipas" />}/>
+          <Route path="/category" element={<ItemListContainer greeting="Catálogo de Pipas" />}/>
 
-        <Route path="/itemDetail/:itemId" element={ <ItemDetailContainer /> } />
+          <Route path="/itemDetail/:itemId" element={ <ItemDetailContainer /> } />
 
-        <Route path="/cart" element={ <h3>Aca se muestra el carrito</h3> } />
+          <Route path="/cart" element={ <Cart /> } />
 
-        <Route path="*" element={ <h2>Lo siento esta url no existe</h2> } />
+          <Route path="*" element={ <h2>Lo siento esta url no existe</h2> } />
 
-      </Routes>
+        </Routes>
+
+      </CartContextProvider>
 
     </BrowserRouter>
   );

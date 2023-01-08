@@ -3,7 +3,7 @@ import Item from '../item/Item'
 const ItemList = ({items}) => {
     
     return (
-        <div className='container'>
+        <div className='col-3'>
             {
                 items && items.length > 0 && items.map((item) => {
                     return (

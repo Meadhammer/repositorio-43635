@@ -1,7 +1,15 @@
+import { useContext } from "react"
+import { CartContext } from "../context/CartContext"
+import Counter from "../counter/Counter"
 
 const ItemDetail = ({item}) => {
 
-  console.log(item)
+  const {addItem} = useContext(CartContext)
+
+  const onAdd = ( quantity ) => {
+    console.log("La cantidad es: ", quantity)
+    addItem({...item, quantity: quantity})
+  }
 
     return (
         <div className = "col-12 col-lg-6 col-xxl-4" >
@@ -57,6 +65,7 @@ const ItemDetail = ({item}) => {
                               </div>
                           </div>
                           {/* <!-- fin modal --> */}
+                <Counter onAdd={onAdd} stock={item.cantidad} />
               </div>
           </div>
         </div>

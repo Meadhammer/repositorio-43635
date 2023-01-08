@@ -2,21 +2,32 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import ItemDetail from '../itemDetail/ItemDetail'
 import { useParams } from "react-router-dom"
-import {mock} from '../../productMock'
+import { getDoc, doc, collection } from "firebase/firestore"
+import { db } from "../../firebaseConfig"
 
 const ItemDetailContainer = () => {
     
     const { itemId } = useParams()
-    console.log(itemId)
-    console.log(mock)
 
     const [product, setProduct] = useState({})    
 
     useEffect ( ()=>{
-        const productSelected = mock.find( item => item.id === parseInt(itemId) )
-        setProduct(productSelected)
+
+        const itemCollection = collection( db, "Products" )
+
+        const ref = doc( itemCollection, itemId )
+
+        getDoc(ref)
+        .then( res => {
+            setProduct(
+                {
+                id: res.id,
+                ...res.data()
+                }
+            )
+        })
+
     }, [itemId])
-    console.log(product)
 
     return (
         <div className='container'>

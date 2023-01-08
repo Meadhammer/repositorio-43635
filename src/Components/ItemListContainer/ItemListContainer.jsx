@@ -2,42 +2,64 @@ import './ItemListContainer.scss'
 import { useEffect, useState } from 'react'
 import { useParams } from "react-router-dom"
 import ItemList from '../itemList/ItemList'
-import {mock} from '../../productMock'
+import { getDocs, collection, query, where} from "firebase/firestore"
+import { db } from "../../firebaseConfig"
 
 export const ItemListContainer = (props) => {
-   
-    const [stock, setStock] = useState([])
 
     const [items, setItems] = useState([])
+
+    const [isLoading, setIsLoading] = useState(false)
 
     const { categoryId } = useParams()
 
     useEffect (()=>{
-        const task = new Promise((resolve, reject) => {
-            setTimeout(() => {
-              resolve(mock)
-            }, 2000)
+
+      setIsLoading(true)
+
+      const itemCollection = collection(db, "Products")
+
+      if ( categoryId ) {
+        const q = query( itemCollection, where( "categoria", "==", categoryId ) )
+        getDocs(q)
+        .then( res => {
+          const products = res.docs.map( product => {
+            return {
+              id: product.id,
+              ...product.data()
+            }
           })
-      
-          task
-            .then((res) => {
-                setStock(res)
-                console.log("Stock recuperado: " + stock)
-            })
-            .catch((err) => {
-              console.log("se rechazo")
-            })
-        
-        const stockFiltered = stock.filter(
-            (item) => item.categoria === categoryId
-          )
-        setItems(stockFiltered)
+          setItems(products)
+          setIsLoading(false)
+        })
+        .catch((err) => console.log(err))
+      }else {
+        getDocs(itemCollection)
+        .then( res => {
+          const products = res.docs.map( product => {
+            return {
+              id: product.id,
+              ...product.data()
+            }
+          })
+          setItems(products)
+          setIsLoading(false)
+        })
+        .catch((err) => console.log(err))
+      }
+
     }, [categoryId])
 
     return (
         <div className="itemListContainer">
-            <h2 className='col-12'>{ props.greeting } {categoryId && categoryId} </h2>
-            <ItemList items={categoryId ? items : stock} />
+            {isLoading ? (
+              <h2>Loading...</h2>
+            ) : (
+              <div>
+                <h2 className='col-12'>{ props.greeting } {categoryId && categoryId} </h2>
+                <ItemList items={items} />
+              </div>
+            )}
         </div>   
     )
 }
