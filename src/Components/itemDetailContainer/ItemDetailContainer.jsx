@@ -4,6 +4,7 @@ import ItemDetail from '../itemDetail/ItemDetail'
 import { useParams } from "react-router-dom"
 import { getDoc, doc, collection } from "firebase/firestore"
 import { db } from "../../firebaseConfig"
+import "./ItemDetailContainer.scss"
 
 const ItemDetailContainer = () => {
     
@@ -30,7 +31,7 @@ const ItemDetailContainer = () => {
     }, [itemId])
 
     return (
-        <div className='container'>
+        <div className='itemDetailContainer'>
             <ItemDetail  item={product} />
         </div>
     )

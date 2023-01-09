@@ -51,7 +51,7 @@ export const ItemListContainer = (props) => {
     }, [categoryId])
 
     return (
-        <div className="itemListContainer">
+        <div className="itemListContainer pt-2">
             {isLoading ? (
               <h2>Loading...</h2>
             ) : (

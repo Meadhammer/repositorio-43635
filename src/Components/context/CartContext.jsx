@@ -34,10 +34,35 @@ const CartContextProvider = ( {children} ) => {
         setCart([])
     }
 
+    const getTotalQuantity = () => {
+        const cartQuantity = cart.reduce((acc, element) => {
+            return acc + element.quantity
+        }, 0)
+    
+        return cartQuantity
+      }
+    
+    const getTotalPrice = () => {
+        const total = cart.reduce((acc, element) => {
+          return acc + element.precio * element.quantity
+        }, 0)
+    
+        return total
+    }
+    
+    const deleteProductById = (id) => {
+        const newCart = cart.filter((e) => e.id !== id)
+    
+        setCart(newCart)
+    }
+
     const data = {
         cart,
         addItem,
-        clear
+        clear,
+        getTotalQuantity,
+        getTotalPrice,
+        deleteProductById
     }
 
   return (

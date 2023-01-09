@@ -5,7 +5,7 @@ const Item = ({item}) => {
     
 
     return (
-        <div className = "col-12 col-lg-6 col-xxl-4" >
+        <div className = "col-6 col-lg-4 col-xxl-3 p-2" >
             <div className="card" style={{width: "22rem",}}>
                 <img src={item.imagenes[0]} className="card-img-top" alt={`pipa${item.id}`} />
                 <div className="card-body">

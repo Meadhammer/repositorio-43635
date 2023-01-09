@@ -7,12 +7,11 @@ const ItemDetail = ({item}) => {
   const {addItem} = useContext(CartContext)
 
   const onAdd = ( quantity ) => {
-    console.log("La cantidad es: ", quantity)
     addItem({...item, quantity: quantity})
   }
 
     return (
-        <div className = "col-12 col-lg-6 col-xxl-4" >
+        <div className = "col-12 col-lg-6 col-xxl-4 pt-4" >
           <div className="card" style={{width: "22rem",}}>
               <img src={item?.imagenes && item.imagenes[0]} className="card-img-top" alt={`pipa${item?.id}`} />
               <div className="card-body">

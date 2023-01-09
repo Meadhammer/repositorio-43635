@@ -1,0 +1,32 @@
+.itemDetailContainer {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: blanchedalmond;
+    height: 100vh;
+    h2 {
+        text-align: center;
+        text-decoration: none;
+        padding-top: 30px;
+        font-family: 'lobster', cursive;
+        font-size: xx-large;
+        color: #cf962a;
+        .btn {
+            font-size: large;
+        }
+    }
+    .boton {
+        text-decoration: none;
+        color: blanchedalmond;
+        background-color: olivedrab;
+        border-radius: 5px;
+        transition: 0.3s ease;
+        border: 0.5px solid #943712;
+        margin: 0 10px;
+        padding: 10px;
+        &:hover {
+            background-color: orangered;
+        }
+    }
+}

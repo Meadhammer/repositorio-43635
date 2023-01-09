@@ -1,6 +1,34 @@
-# Getting Started with Create React App
+# Proyecto Final Comision 43635
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este proyecto fue creado por: [Julio Federico Tripel](https://github.com/Meadhammer).
+***
+Curso Coderhouse, ReactJs.
+Comisión: 43635
+***
+
+## Acerca del Proyecto
+
+Este es un carrito de compras para el sitio de Tripel Pipes, pipas artesanales hechas en maderas alternativas.
+
+### `NavBar`
+
+Menú de navegación con 3 categorías (---Catálogo completo, Pipas de bolsillo y Pipas de lectura---). Branding con retorno al root y acceso al carrito de compras.
+
+### `ItemList`
+
+El catálogo cuenta con una distinción en 2 categorías. Además, la vista inicial simplificada puede expandirse con un botón en la tarjeta, éste da acceso a una versión más detallada que a su vez habilita la posibilidad de agregar el producto al carrito indicando la cantidad deseada. También de ha agregado una lógica para desactivar la posibilidad de comprar cuando el stock de el producto seleccionado es **"0"**
+
+### `Cart`
+
+Los productos pueden ser agragados individualmente al carrito, desde donde se computa el total de artículos y el precio total de la compra. La lógica hace dinámica de aparición de la botonera, de esta manera inutilizando la sección en la ausencia de productos en el carrito.
+
+### `Form`
+
+El Formulario es revelado una vez se confirme el carrito con el botón ***"Comprar"***. El mismo cuenta con un simple método de verificaión de datos para envitar la carga de una orden de compra incompleta.
+
+***
+
+# ReactJs
 
 ## Available Scripts
 
